@@ -1,0 +1,105 @@
+.sign-up-form {
+  background: url('../assets/texture.png') no-repeat;
+  padding: 2rem;
+  background-size: 105%;
+  background-position: -1rem -1rem;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+  }
+
+  .digital-form {
+    margin-top: 2rem;
+
+    .digital-error {
+      color: #EE4367;
+      font-style: italic;
+      font-size: 0.9rem;
+      font-weight: bold;
+      margin-bottom: 0.7rem;
+
+      & + label + input,
+      & + label + select {
+        border-color: #EE4367;
+        background-color: #F8E7E7;
+      }
+    }
+  }
+
+  .form-group {
+    margin-bottom: 2.5rem;
+
+    label {
+      text-transform: uppercase;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.1rem;
+    }
+
+    input[type=text],
+    input[type=email],
+    select {
+      border: 2px solid #D0E8E6;
+      box-shadow: 0.2rem 0.2rem 0.4rem #212529;
+      border-radius: 0;
+    }
+
+    input[disabled] {
+      border-color: #9E9E9E;
+      background-color: #F2F2F2;
+  }
+
+    select {
+      width: 50%;
+    }
+
+    &.check-group {
+      & > .row {
+        padding: 0 1rem;
+      }
+
+      .form-check {
+        margin-bottom: 1rem;
+      }
+      .form-check-input {
+        width: 2em;
+        height: 2em;
+        margin-right: 0.5rem;
+        margin-top: 0;
+      }
+    }
+
+    .btn {
+      border-radius: 5rem;
+      padding: 0.8rem 3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+
+      &:hover {
+        box-shadow: 0.1rem 0.1rem 0.4rem #212529;
+      }
+
+      &.btn-secondary {
+        color: #000;
+        background-color: #fff;
+      }
+
+      &.btn-primary {
+        background-color: #803093;
+        border-color: #803093;
+        margin-right: 1rem;
+      }
+    }
+  }
+
+
+  @media (max-width: 768px) {
+    background-size: initial;
+  }
+}
