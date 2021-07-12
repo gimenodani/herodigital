@@ -1,63 +1,208 @@
+<header class="row">
+  <div class="col-md-12 col-lg-11 sign-up-form pt-0">
+    <h1 class="mt-2">{{ title }}</h1>
+  </div>
+</header>
 <section class="row">
-  <div class="col-11 sign-up-form">
-    <h1>{{ title }}</h1>
-  <p>*Indicates Required Field</p>
-  <form class="digital-form row" [formGroup]="digitalForm" novalidate>
+  <div class="col-md-12 col-lg-11 sign-up-form pt-0">
+    <p>*Indicates Required Field</p>
+    <form
+      class="digital-form row"
+      [formGroup]="digitalForm"
+      novalidate
+      (ngSubmit)="onSubmit()"
+    >
       <div class="form-group col-md-5 col-sm-12">
-        <div class="digital-error" role="alert" *ngIf="digitalForm.controls['firstName'].invalid && (digitalForm.controls['firstName'].dirty || digitalForm.controls['firstName'].touched)">
-          <div *ngIf="digitalForm.controls['firstName'].errors">First name is required</div>
+        <div class="error-container">
+          <div
+            class="digital-error"
+            role="alert"
+            *ngIf="
+              digitalForm.controls['firstName'].invalid &&
+              (digitalForm.controls['firstName'].dirty ||
+                digitalForm.controls['firstName'].touched)
+            "
+          >
+            First name is required
+          </div>
         </div>
-        <label for="firstName" >first name*</label>
-        <input type="text" aria-label="First Name" formControlName="firstName" class="form-control" id="firstName">
+        <label for="firstName">first name*</label>
+        <input
+          type="text"
+          aria-label="First Name"
+          formControlName="firstName"
+          class="form-control"
+          id="firstName"
+        />
       </div>
       <div class="form-group col-md-5 col-sm-12">
-        <div class="digital-error" role="alert" *ngIf="digitalForm.controls['lastName'].invalid && (digitalForm.controls['lastName'].dirty || digitalForm.controls['lastName'].touched)">
-          <div *ngIf="digitalForm.controls['lastName'].errors">Last name is required</div>
+        <div class="error-container">
+          <div
+            class="digital-error"
+            role="alert"
+            *ngIf="
+              digitalForm.controls['lastName'].invalid &&
+              (digitalForm.controls['lastName'].dirty ||
+                digitalForm.controls['lastName'].touched)
+            "
+          >
+            Last name is required
+          </div>
         </div>
         <label for="lastName">last name*</label>
-        <input type="text" aria-label="Last Name" formControlName="lastName" class="form-control" id="lastName">
+        <input
+          type="text"
+          aria-label="Last Name"
+          formControlName="lastName"
+          class="form-control"
+          id="lastName"
+        />
       </div>
       <div class="form-group col-md-5 col-sm-12">
-        <div class="digital-error" role="alert" *ngIf="digitalForm.controls['eMail'].invalid && (digitalForm.controls['eMail'].dirty || digitalForm.controls['eMail'].touched)">
-          <div *ngIf="digitalForm.controls['eMail'].errors">Email is required</div>
+        <div class="error-container">
+          <div
+            class="digital-error"
+            role="alert"
+            *ngIf="
+              digitalForm.controls['eMail'].invalid &&
+              (digitalForm.controls['eMail'].dirty ||
+                digitalForm.controls['eMail'].touched)
+            "
+          >
+            Email is required
+          </div>
         </div>
         <label for="eMail">Email address*</label>
-        <input type="email" aria-label="Email" class="form-control" formControlName="eMail" id="eMail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+        <input
+          type="email"
+          aria-label="Email"
+          class="form-control"
+          formControlName="eMail"
+          id="eMail"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+        />
       </div>
-      <div class="form-group col-md-5 col-sm-12">
+      <div class="form-group col-md-5 col-sm-12 error-space">
         <label for="organization">organization</label>
-        <input type="text" aria-label="Organization" class="form-control" formControlName="organization" id="organization">
+        <input
+          type="text"
+          aria-label="Organization"
+          class="form-control"
+          formControlName="organization"
+          id="organization"
+        />
       </div>
       <div class="form-group col-md-5 col-sm-12">
-        <div class="digital-error" role="alert" *ngIf="digitalForm.controls['euResident'].invalid && (digitalForm.controls['euResident'].dirty || digitalForm.controls['euResident'].touched)">
-          <div *ngIf="digitalForm.controls['euResident'].errors">EU resident is required</div>
+        <div class="error-container">
+          <div
+            class="digital-error"
+            role="alert"
+            *ngIf="
+              digitalForm.controls['euResident'].invalid &&
+              (digitalForm.controls['euResident'].dirty ||
+                digitalForm.controls['euResident'].touched)
+            "
+          >
+            EU resident is required
+          </div>
         </div>
-        <label for="euResident">eu resident*</label>
-        <select class="form-control" id="euResident" formControlName="euResident" aria-label="eu resident">
+        <label>eu resident*</label>
+        <select
+          class="form-control"
+          id="euResident"
+          formControlName="euResident"
+          aria-label="eu resident"
+        >
           <option>yes</option>
           <option>no</option>
         </select>
-      </div>
-      <div class="form-group check-group col-md-10 col-sm-12" role="group" aria-labelledby="updates-options">
-        <div class="row">
-          <div class="form-check col-md-6 col-sm-12">
-            <input class="form-check-input" type="checkbox" id="advances" value="advances" formControlName="advances" aria-label="Advances option">
-            <label class="form-check-label" for="advances">advances</label>
-          </div>
-          <div class="form-check col-md-6 col-sm-12">
-            <input class="form-check-input" type="checkbox" id="alerts" value="alerts" formControlName="alerts" aria-label="Alerts option">
-            <label class="form-check-label" for="alerts">alerts</label>
-          </div>
-          <div class="form-check col-12">
-            <input class="form-check-input" type="checkbox" id="otherCom" value="otherCom" formControlName="otherCom" aria-label="Other Communications option">
-            <label class="form-check-label" for="otherCom">other communications</label>
+
+        <div class="euResident-container">
+          <div
+            class="euResident-select"
+            aria-label="eu resident"
+            (click)="openSelect()"
+            [ngClass]="status ? 'open' : 'close'"
+          >
+            <div
+              class="euResident-select-opt"
+            > <!-- formControlName="euResident" -->
+              <span>- Select one -</span>
+              <div class="arrow"></div>
+            </div>
+            <div class="euResident-options">
+              <span class="euResident-option" data-value="yes">yes</span>
+              <span class="euResident-option" data-value="no">no</span>
+            </div>
           </div>
         </div>
       </div>
-    <div class="form-group">
-      <button type="submit" class="btn btn-primary">Submit</button>
-      <button type="clear" class="btn btn-secondary" (click)="digitalForm.reset()">reset</button>
-    </div>
-  </form>
+      <div class="form-group check-group col-md-10 col-sm-12" role="group">
+        <div class="row" formGroupName="myCheckboxGroup">
+          <div class="error-container">
+            <div class="digital-error" role="alert" *ngIf="">
+              At least one option needs to be selected
+            </div>
+          </div>
+          <div class="form-check col-md-6 col-sm-12">
+            <label class="check-container"
+              >advances
+              <input
+                type="checkbox"
+                id="advances"
+                value="advances"
+                formControlName="advances"
+                aria-label="Advances option"
+              />
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div class="form-check col-md-6 col-sm-12">
+            <label class="check-container"
+              >alerts
+              <input
+                type="checkbox"
+                id="alerts"
+                value="alerts"
+                formControlName="alerts"
+                aria-label="Alerts option"
+              />
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div class="form-check col-12">
+            <label class="check-container"
+              >other communications
+              <input
+                type="checkbox"
+                id="otherCom"
+                value="otherCom"
+                formControlName="otherCom"
+                aria-label="Other Communications option"
+              />
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group mb-4">
+        <button
+          type="submit"
+          class="btn btn-primary mb-3"
+          [disabled]="digitalForm.invalid"
+        >
+          Submit
+        </button>
+        <button
+          type="clear"
+          class="btn btn-secondary mb-3"
+          (click)="digitalForm.reset()"
+        >
+          reset
+        </button>
+
+        <p *ngIf="message">{{ message }}</p>
+      </div>
+    </form>
   </div>
 </section>

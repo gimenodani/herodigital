@@ -1,7 +1,11 @@
+header.sign-up-form {
+  padding-bottom: 0;
+}
+
 .sign-up-form {
-  background: url('../assets/texture.png') no-repeat;
+  background: url("../assets/texture.png") no-repeat;
   padding: 2rem;
-  background-size: 105%;
+  background-size: 150%;
   background-position: -1rem -1rem;
 
   h1 {
@@ -17,18 +21,22 @@
   .digital-form {
     margin-top: 2rem;
 
-    .digital-error {
-      color: #EE4367;
-      font-style: italic;
-      font-size: 0.9rem;
-      font-weight: bold;
-      margin-bottom: 0.7rem;
+    .error-container {
+      height: 2rem;
 
-      & + label + input,
-      & + label + select {
-        border-color: #EE4367;
-        background-color: #F8E7E7;
+      .digital-error {
+        color: #ee4367;
+        font-style: italic;
+        font-size: 0.9rem;
+        font-weight: bold;
+        margin-bottom: 0.7rem;
       }
+    }
+
+    input.ng-invalid.ng-touched,
+    select.ng-invalid.ng-touched {
+      border-color: #ee4367;
+      background-color: #f8e7e7;
     }
   }
 
@@ -42,21 +50,112 @@
       letter-spacing: 0.1rem;
     }
 
-    input[type=text],
-    input[type=email],
+    input[type="text"],
+    input[type="email"],
     select {
-      border: 2px solid #D0E8E6;
+      border: 2px solid #d0e8e6;
       box-shadow: 0.2rem 0.2rem 0.4rem #212529;
       border-radius: 0;
     }
 
     input[disabled] {
-      border-color: #9E9E9E;
-      background-color: #F2F2F2;
-  }
+      border-color: #9e9e9e;
+      background-color: #f2f2f2;
+    }
 
     select {
       width: 50%;
+    }
+
+    .euResident-container {
+      position: relative;
+      user-select: none;
+      width: 100%;
+    }
+    .euResident-select {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border: 2px solid #d0e8e6;
+      box-shadow: 0.2rem 0.2rem 0.4rem #212529;
+      padding: 0.5rem;
+      background: #ffffff;
+
+      .euResident-select-opt {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1.8rem 0 1.2rem;
+        font-size: 1rem;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        .arrow {
+          position: relative;
+
+          &::after {
+            content: "";
+            position: absolute;
+            background-image: url(../assets/text-expand-arrow.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            top: -0.4rem;
+            right: 0;
+            left: 0.3rem;
+            width: 1rem;
+            height: 1rem;
+            transition: all 0.5s;
+          }
+        }
+      }
+
+      .euResident-options {
+        position: absolute;
+        display: block;
+        top: 100%;
+        left: 0;
+        right: 0;
+        border: 3px solid #d0e8e6;
+        border-top: 0;
+        box-shadow: 0.2rem 0.2rem 0.4rem #212529;
+        background: #fff;
+        transition: all 0.5s;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        z-index: 2;
+
+        & .euResident-option {
+          position: relative;
+          display: block;
+          padding: 0 1.5rem 0 1.5rem;
+          border-bottom: 2px solid #d0e8e6;
+          font-size: 1rem;
+          text-transform: uppercase;
+          line-height:2.5rem;
+          cursor: pointer;
+          transition: all 0.5s;
+
+          &:hover {
+            cursor: pointer;
+            background-color: #E1F0EF;
+          }
+
+          &:last-child {border-bottom: none;}
+        }
+      }
+
+      &.open .euResident-options {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+      }
+
+      &.open .arrow::after {
+        left: 5px;
+        transform: rotate(90deg);
+      }
     }
 
     &.check-group {
@@ -66,13 +165,67 @@
 
       .form-check {
         margin-bottom: 1rem;
+        padding-left: 0;
       }
-      .form-check-input {
-        width: 2em;
-        height: 2em;
-        margin-right: 0.5rem;
-        margin-top: 0;
+      .check-container {
+        display: block;
+        position: relative;
+        padding-left: 2.2rem;
+        line-height: 1.8rem;
+        margin-bottom: 0;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        input {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+          height: 0;
+          width: 0;
+
+          &:checked ~ .checkmark {
+            background-color: #803093;
+            border-color: #803093;
+            box-shadow: none;
+
+            &:after {
+              display: block;
+            }
+          }
+          &:focus ~ .checkmark {
+            border: 2px dotted;
+          }
+        }
+
+        .checkmark {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 1.5rem;
+          width: 1.5rem;
+          border: 2px solid #d0e8e6;
+          box-shadow: 0.2rem 0.2rem 0.4rem #212529;
+          background-color: #fff;
+
+          &::after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 2px;
+            top: 2px;
+            background: url("../assets/check.svg") no-repeat;
+            width: 1rem;
+            height: 1rem;
+          }
+        }
       }
+    }
+
+    &.error-space {
+      margin-top: 2rem;
     }
 
     .btn {
@@ -98,8 +251,7 @@
     }
   }
 
-
   @media (max-width: 768px) {
-    background-size: initial;
+    background-size: 500%;
   }
 }
